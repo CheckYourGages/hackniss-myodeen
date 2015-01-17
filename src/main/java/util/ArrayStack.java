@@ -56,25 +56,6 @@ public class ArrayStack{
             return null;
     }
 
-    public int[] average(){
-        if(isEmpty()){return null;}
-
-        Node current = head;
-        int[] total = new int[current.getArray().length];
-        while(current!=null){
-            for(int i=0; i<total.length; i++){
-                total[i] += current.getArray()[i];
-            }
-            current=current.getNext();
-        }
-
-        for(int i=0; i<total.length; i++){
-            total[i]=total[i]/size();
-        }
-
-        return total;
-    }
-
     public void clear(){
         head=null;
         count=0;

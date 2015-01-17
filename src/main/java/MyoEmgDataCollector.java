@@ -1,16 +1,19 @@
-package util;
-
 import java.util.Arrays;
 
 import com.thalmic.myo.AbstractDeviceListener;
 import com.thalmic.myo.FirmwareVersion;
 import com.thalmic.myo.Myo;
 
-public class EmgDataCollector extends AbstractDeviceListener {
+/**
+ * Adapted from myo-java examples
+ *
+ * @see "https://github.com/NicholasAStuart/myo-java/"
+ */
+public class MyoEmgDataCollector extends AbstractDeviceListener {
 
     protected byte[] emgSamples;
 
-    public EmgDataCollector() {
+    public MyoEmgDataCollector() {
 
     }
 
@@ -35,8 +38,9 @@ public class EmgDataCollector extends AbstractDeviceListener {
 
     /**
      * Converts data from a collector to an integer array
+     * author: Leo Xuzhang Lin
      */
-    public static int[] collectorToArray(EmgDataCollector collector){
+    public static int[] collectorToArray(MyoEmgDataCollector collector){
         if(collector.emgSamples != null) {
             int[] array = new int[collector.emgSamples.length];
             for (int i = 0; i < collector.emgSamples.length; i++) {

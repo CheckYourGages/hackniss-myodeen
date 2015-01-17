@@ -1,14 +1,15 @@
-package util;
-
 import com.thalmic.myo.AbstractDeviceListener;
 import com.thalmic.myo.Myo;
 import com.thalmic.myo.Pose;
 import com.thalmic.myo.Quaternion;
 import com.thalmic.myo.enums.Arm;
-import com.thalmic.myo.enums.PoseType;
-import com.thalmic.myo.enums.VibrationType;
 import com.thalmic.myo.enums.XDirection;
 
+/**
+ * Adapted from myo-java examples
+ *
+ * @see "https://github.com/NicholasAStuart/myo-java/"
+ */
 public class MyoDataCollector extends AbstractDeviceListener {
     private static final int SCALE = 18;
     private double rollW;
@@ -40,9 +41,17 @@ public class MyoDataCollector extends AbstractDeviceListener {
     @Override
     public void onPose(Myo myo, long timestamp, Pose pose) {
         currentPose = pose;
-        if (currentPose.getType() == PoseType.FIST) {
-            myo.vibrate(VibrationType.VIBRATION_MEDIUM);
-        }
+        KEStateMachine.STATE_MACHINE.happened(myo, pose);
+    }
+
+    @Override
+    public void onLock(Myo myo, long timestamp) {
+        KEStateMachine.STATE_MACHINE.lockHappened(myo);
+    }
+
+    @Override
+    public void onUnlock(Myo myo, long timestamp) {
+        KEStateMachine.STATE_MACHINE.unlockHappened(myo);
     }
 
     @Override
