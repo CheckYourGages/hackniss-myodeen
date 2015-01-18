@@ -3,6 +3,8 @@ import com.thalmic.myo.Myo;
 import com.thalmic.myo.Pose;
 import com.thalmic.myo.Quaternion;
 import com.thalmic.myo.enums.Arm;
+import com.thalmic.myo.enums.PoseType;
+import com.thalmic.myo.enums.VibrationType;
 import com.thalmic.myo.enums.XDirection;
 
 /**

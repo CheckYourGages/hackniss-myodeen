@@ -10,13 +10,17 @@ public class DataUtils {
         }
     }
 
-    public static int[] sumStackArrayValues(ArrayStack stackOfarrays){
+    public static int[] sumAndAverageStackArrayValues(ArrayStack stackOfarrays){
         int[] total = new int[8];
         while(!stackOfarrays.isEmpty()){
             int[] tmp = stackOfarrays.pop();
             for(int i=0; i<tmp.length; i++){
                 total[i]+=tmp[i];
             }
+        }
+        
+        for(int i = 0; i<total.length; i++){
+			total[i]=total[i]/total.length;
         }
         return total;
     }

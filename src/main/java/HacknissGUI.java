@@ -108,6 +108,16 @@ public class HacknissGUI extends JFrame{
 		model.addRow(row);
 	}
 	
+	
+	public void toggleAll(boolean t){
+		String c = "";
+		if(t){c="a";}
+		image1.setIcon(new ImageIcon(loader.getResource("img/1"+c+".png")));
+		image2.setIcon(new ImageIcon(loader.getResource("img/2"+c+".png")));
+		image3.setIcon(new ImageIcon(loader.getResource("img/3"+c+".png")));
+		
+	}
+	
 	public void toggle(int i, boolean t){
 		String c = "";
 		if(t){c="a";}
