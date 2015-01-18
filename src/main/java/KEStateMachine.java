@@ -134,9 +134,9 @@ public class KEStateMachine {
             	workset[4] = "Good";
             	reminded=false;
             }
-            
-            if((System.currentTimeMillis()-start_seven) > 7000){
-            }
+//            
+//            if((System.currentTimeMillis()-start_seven) > 7000){
+//            }
             
             HacknissMyodeen.GUI.setTime(String.valueOf((double)(System.currentTimeMillis()-start)/1000));
         }
@@ -144,9 +144,9 @@ public class KEStateMachine {
             int[] array = MyoEmgDataCollector.collectorToArray(emg);
             DataUtils.allValuesAbsolute(array);
             workstack.push(array);
-            
-            if((System.currentTimeMillis()-start_seven) > 7000){
-            }
+//            
+//            if((System.currentTimeMillis()-start_seven) > 7000){
+//            }
             
             HacknissMyodeen.GUI.setTime(String.valueOf((double)(System.currentTimeMillis()-start)/1000));
         }
