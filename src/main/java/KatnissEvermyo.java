@@ -9,9 +9,12 @@ public class KatnissEvermyo {
     Hub hub; // Myo Hub Object
     DeviceListener emgCollector; // Delegate to collect EMG
     DeviceListener dataCollector; // Delegate to collect regular data
+    static final KatnissGUI GUI = new KatnissGUI();
 
     public static void main(String[] args) {
         KatnissEvermyo app = new KatnissEvermyo();
+        
+
         app.init();
 
         // Run app until manual termination
