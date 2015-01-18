@@ -1,12 +1,12 @@
 import javax.swing.*;
-import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 
-public class KatnissGUI extends JFrame{
+public class HacknissGUI extends JFrame{
 	
 	private static final long serialVersionUID = 4689741290780397965L;
 	
@@ -16,8 +16,9 @@ public class KatnissGUI extends JFrame{
 	ClassLoader loader;
 	JLabel timer;
 	private JTable table;
+	DefaultTableModel model;
 	
-	public KatnissGUI(){
+	public HacknissGUI(){
 		super("Hackniss Myodeen");
 		setSize(500, 500);
 		setResizable(false);
@@ -88,12 +89,23 @@ public class KatnissGUI extends JFrame{
 		timer.setBounds(6, 168, 484, 16);
 		bottomPanel.add(timer);
 		
-		table = new JTable();
-		table.setBounds(50, 213, 389, 176);
-		
+		model = new DefaultTableModel();
+		String[] columnNames={"Draw", "Draw Time", "Release", "Release Time", "Posture"};
+		table = new JTable(model);
+		table.setForeground(Color.WHITE);
+		table.setBackground(Color.BLACK);
+		table.setBounds(32, 213, 431, 176);
+		for(String col: columnNames){
+			model.addColumn(col);
+		}
+		model.addRow(columnNames);
 		bottomPanel.add(table);
 		
 		setVisible(true);
+	}
+	
+	public void addRow(String[] row){
+		model.addRow(row);
 	}
 	
 	public void toggle(int i, boolean t){

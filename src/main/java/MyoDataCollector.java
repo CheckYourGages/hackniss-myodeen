@@ -24,6 +24,10 @@ public class MyoDataCollector extends AbstractDeviceListener {
         yawW = 0;
         currentPose = new Pose();
     }
+    
+    public double getRoll(){
+    	return rollW;
+    }
 
     @Override
     public void onOrientationData(Myo myo, long timestamp, Quaternion rotation) {

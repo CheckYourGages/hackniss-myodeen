@@ -3,16 +3,17 @@ import com.thalmic.myo.Hub;
 import com.thalmic.myo.Myo;
 import com.thalmic.myo.enums.StreamEmgType;
 
-public class KatnissEvermyo {
+public class HacknissMyodeen {
 
     static final int frequency = 50; // Read data from hub ever x miliseconds
     Hub hub; // Myo Hub Object
+    Myo myo;
     DeviceListener emgCollector; // Delegate to collect EMG
     DeviceListener dataCollector; // Delegate to collect regular data
-    static final KatnissGUI GUI = new KatnissGUI();
+    static final HacknissGUI GUI = new HacknissGUI();
 
     public static void main(String[] args) {
-        KatnissEvermyo app = new KatnissEvermyo();
+        HacknissMyodeen app = new HacknissMyodeen();
         
 
         app.init();
@@ -20,7 +21,7 @@ public class KatnissEvermyo {
         // Run app until manual termination
         while(true){
             app.hub.run(frequency);
-            KEStateMachine.STATE_MACHINE.performAction();
+            KEStateMachine.STATE_MACHINE.performAction(app.myo);
             //System.out.println(app.dataCollector);
         }
 
@@ -31,7 +32,7 @@ public class KatnissEvermyo {
     public void init(){
         hub = new Hub("com.example.emg-data-sample");
         System.out.println("Attempting to find a Myo...");
-        Myo myo = hub.waitForMyo(10000);
+        myo = hub.waitForMyo(10000);
 
         if (myo == null) {
             throw new RuntimeException("Unable to find a Myo!");
