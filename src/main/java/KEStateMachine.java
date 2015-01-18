@@ -19,8 +19,8 @@ public class KEStateMachine {
     static MyoDataCollector data = null;
     static MyoEmgDataCollector emg = null;
     static ArrayStack workstack = new ArrayStack();
-    long start_seven=System.currentTimeMillis();
-    long start=System.currentTimeMillis();
+    long start_seven;//=System.currentTimeMillis();
+    long start;//=System.currentTimeMillis();
     String[] workset = new String[5];
     boolean reminded=false;
 
@@ -123,16 +123,17 @@ public class KEStateMachine {
             workstack.push(array);
             
             double row = data.getRoll();
-            if(row<11 || row>12){
+            if(row<10.9 || row>11.6){
             	workset[4]= "Bad";
-            	if(!reminded){
-            		myo.vibrate(VibrationType.VIBRATION_LONG);
-            		reminded=true;
-            	}
+            	reminded=false;
             }
             else{
             	workset[4] = "Good";
-            	reminded=false;
+            	
+            	if(!reminded){
+            		myo.vibrate(VibrationType.VIBRATION_SHORT);
+            		reminded=true;
+            	}
             }
 //            
 //            if((System.currentTimeMillis()-start_seven) > 7000){
